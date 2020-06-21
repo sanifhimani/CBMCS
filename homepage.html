@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div>
+	<h2 class="heading"><time>00:00:00</time></h2>
+	<button id="start">start</button>
+	<button id="stop">stop</button>
+	<button id="clear">clear</button>
+	</h2>
+	
+
+	<center>
+		<h1 class="heading">MOTOR</h1>	
+		<label class="switch">
+			
+			 <input type="checkbox" onclick="working();">
+			 <span class="slider round" onclick="alert("hi"); ></span>
+			
+		</label><br>
+		<div class="boxContainer">
+			<div class="box">sensor1
+            <p>Threshold:200</p>
+			<p id="1">Sensor value</p> 
+			<span id="sensorone"></span>
+			<form>
+            <input type="hidden" id="one" value="300"/>
+			</form>
+            </div>
+			<div class="box">sensor2
+            <p>Threshold:200</p>
+            <p id="2">Sensor value</p> 
+			<span id="sensortwo"></span>			
+			<form>
+            <input type="hidden" id="two" value="300"/>
+			</form>
+            </div>
+			<div class="box">sensor3
+            <p>threshold:200</p>
+            <p id="3">Sensor value</p>
+			<span id="sensorthree"></span>
+			<form>
+            <input type="hidden" id="three" value="300"/>
+			</form>
+            </div>
+			<div class="box">sensor4
+            <p>threshold:200</p>
+            <p id="4">Sensor value</p>
+			<span id="sensorfour"></span>
+			<form>
+            <input type="hidden" id="four" value="300"/>
+			</form>
+			</div>
+		</div>
+	</center>
+	
+</body>
+</html>
+
+<script>
+
+var h2 = document.getElementsByTagName('h2')[0],
+    start = document.getElementById('start'),
+    stop = document.getElementById('stop'),
+    clear = document.getElementById('clear'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+function time(){
+start();
+stop();
+}
+function add() {
+    seconds++;
+    if (seconds >= 60) {z
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    h2.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+timer();
+
+
+/* Start button */
+start.onclick = timer;
+
+/* Stop button */
+stop.onclick = function() {
+    clearTimeout(t);
+}
+
+/* Clear button */
+clear.onclick = function() {
+    h2.textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+}
+function working(){
+	
+	
+	var sensor= document.getElementById("one").value;
+	
+	//alert(sensor);
+	var threshold=200;
+	 document.getElementById("sensorone").innerHTML=sensor;
+	if(sensor>threshold)
+	{
+		document.getElementById("sensorone").innerHTML=sensor;
+	 //alert("your sensor one value is greater than threshold");
+	}
+	else
+	{
+		
+	 //alert("your sensor one value is less than threshold");
+	}
+	var sensor2= document.getElementById("two").value;
+	//alert(sensor2);
+	var threshold2=200;
+	 document.getElementById("sensortwo").innerHTML=sensor2;
+	if(sensor2>threshold2)
+	{
+	 //alert("your sensor two value is greater than threshold");
+	}
+	else
+	{
+	 //alert("your sensor two value is less than threshold");
+	}
+	var sensor3= document.getElementById("three").value;
+	//alert(sensor3);
+	var threshold3=200;
+	 document.getElementById("sensorthree").innerHTML=sensor3;
+	if(sensor3>threshold3)
+	{
+	 //alert("your sensor three value is greater than threshold");
+	}
+	else
+	{
+	 //alert("your sensor three value is less than threshold");
+	}
+	var sensor4= document.getElementById("four").value;
+	//alert(sensor4);
+	var threshold4=200;
+	 document.getElementById("sensorfour").innerHTML=sensor4;
+	if(sensor4>threshold4)
+	{
+	 //alert("your sensor four value is greater than threshold");
+	}
+	else
+	{
+	 //alert("your sensor four value is less than threshold");
+	}
+	}
+</script>
